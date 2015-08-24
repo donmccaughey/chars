@@ -22,6 +22,11 @@
 		D41ABCDF1B8BD9EE00C6C702 /* case_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCDD1B8BD9EE00C6C702 /* case_convert.c */; };
 		D41ABCE01B8BD9EE00C6C702 /* case_convert.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCDE1B8BD9EE00C6C702 /* case_convert.h */; };
 		D41ABCE21B8BDD5F00C6C702 /* case_convert_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCE11B8BDD5F00C6C702 /* case_convert_tests.c */; };
+		D41ABCE51B8BE03700C6C702 /* url_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCE31B8BE03700C6C702 /* url_encode.c */; };
+		D41ABCE61B8BE03700C6C702 /* url_encode.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCE41B8BE03700C6C702 /* url_encode.h */; };
+		D41ABCE81B8BE06000C6C702 /* url_encode_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCE71B8BE06000C6C702 /* url_encode_tests.c */; };
+		D41ABCEB1B8BE17000C6C702 /* add_char.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCE91B8BE17000C6C702 /* add_char.c */; };
+		D41ABCEC1B8BE17000C6C702 /* add_char.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCEA1B8BE17000C6C702 /* add_char.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		D41ABCDD1B8BD9EE00C6C702 /* case_convert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = case_convert.c; sourceTree = "<group>"; };
 		D41ABCDE1B8BD9EE00C6C702 /* case_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = case_convert.h; sourceTree = "<group>"; };
 		D41ABCE11B8BDD5F00C6C702 /* case_convert_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = case_convert_tests.c; sourceTree = "<group>"; };
+		D41ABCE31B8BE03700C6C702 /* url_encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = url_encode.c; sourceTree = "<group>"; };
+		D41ABCE41B8BE03700C6C702 /* url_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = url_encode.h; sourceTree = "<group>"; };
+		D41ABCE71B8BE06000C6C702 /* url_encode_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = url_encode_tests.c; sourceTree = "<group>"; };
+		D41ABCE91B8BE17000C6C702 /* add_char.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = add_char.c; sourceTree = "<group>"; };
+		D41ABCEA1B8BE17000C6C702 /* add_char.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = add_char.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +120,8 @@
 		D41ABCB81B8AD65400C6C702 /* chars */ = {
 			isa = PBXGroup;
 			children = (
+				D41ABCEA1B8BE17000C6C702 /* add_char.h */,
+				D41ABCE91B8BE17000C6C702 /* add_char.c */,
 				D41ABCD21B8AD9DE00C6C702 /* c_escape.h */,
 				D41ABCD11B8AD9DE00C6C702 /* c_escape.c */,
 				D41ABCDE1B8BD9EE00C6C702 /* case_convert.h */,
@@ -119,6 +131,8 @@
 				D41ABCD71B8BC6BF00C6C702 /* elide.c */,
 				D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */,
 				D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */,
+				D41ABCE41B8BE03700C6C702 /* url_encode.h */,
+				D41ABCE31B8BE03700C6C702 /* url_encode.c */,
 			);
 			path = chars;
 			sourceTree = "<group>";
@@ -132,6 +146,7 @@
 				D41ABCDB1B8BC82900C6C702 /* elide_tests.c */,
 				D41ABCBE1B8AD66000C6C702 /* main.c */,
 				D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */,
+				D41ABCE71B8BE06000C6C702 /* url_encode_tests.c */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -147,6 +162,8 @@
 				D41ABCE01B8BD9EE00C6C702 /* case_convert.h in Headers */,
 				D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */,
 				D41ABCD41B8AD9DE00C6C702 /* c_escape.h in Headers */,
+				D41ABCE61B8BE03700C6C702 /* url_encode.h in Headers */,
+				D41ABCEC1B8BE17000C6C702 /* add_char.h in Headers */,
 				D41ABCC31B8AD6A000C6C702 /* uint8_convert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,9 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D41ABCD91B8BC6BF00C6C702 /* elide.c in Sources */,
+				D41ABCE51B8BE03700C6C702 /* url_encode.c in Sources */,
 				D41ABCD31B8AD9DE00C6C702 /* c_escape.c in Sources */,
 				D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */,
 				D41ABCDF1B8BD9EE00C6C702 /* case_convert.c in Sources */,
+				D41ABCEB1B8BE17000C6C702 /* add_char.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +262,7 @@
 				D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */,
 				D41ABCE21B8BDD5F00C6C702 /* case_convert_tests.c in Sources */,
 				D41ABCBF1B8AD66000C6C702 /* main.c in Sources */,
+				D41ABCE81B8BE06000C6C702 /* url_encode_tests.c in Sources */,
 				D41ABCD61B8ADBD000C6C702 /* c_escape_tests.c in Sources */,
 				D41ABCDC1B8BC82900C6C702 /* elide_tests.c in Sources */,
 			);

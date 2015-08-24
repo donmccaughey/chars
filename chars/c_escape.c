@@ -2,20 +2,8 @@
 
 #include <stdbool.h>
 
+#include "add_char.h"
 #include "uint8_convert.h"
-
-
-static char *
-add_char(char ch, char *buffer, char *buffer_end, bool *is_full)
-{
-    if (buffer_end == buffer) {
-        *is_full = true;
-    } else {
-        *buffer++ = ch;
-        *is_full = false;
-    }
-    return buffer;
-}
 
 
 static char *

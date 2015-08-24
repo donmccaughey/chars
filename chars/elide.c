@@ -1,7 +1,7 @@
 #include "elide.h"
 
 
-static int
+static bool
 backup_and_replace_suffix(char *start, char *end, char const *suffix)
 {
     char const *s = suffix;
@@ -16,28 +16,24 @@ backup_and_replace_suffix(char *start, char *end, char const *suffix)
 
 
 bool
-elide_string(char const *s,
+elide_string(char const *string,
              char const *ellipsis,
              char *buffer,
              char *buffer_end,
              bool *is_elided)
 {
-    char *start = buffer;
-    char *end = buffer_end - sizeof(char);
-    bool result = true;
-    bool elided_result = false;
-    
-    while (*s && buffer < end) *buffer++ = *s++;
-    if (*s) {
-        if (backup_and_replace_suffix(start, buffer, ellipsis)) {
-            elided_result = true;
-        } else {
-            buffer = start;
-            result = false;
+    char *buffer_start = buffer;
+    buffer_end -= sizeof(char);
+    while (*string && buffer < buffer_end) *buffer++ = *string++;
+    if (*string) {
+        if (!backup_and_replace_suffix(buffer_start, buffer, ellipsis)) {
+            *buffer_start = '\0';
+            return false;
         }
+        if (is_elided) *is_elided = true;
+    } else {
+        if (is_elided) *is_elided = false;
     }
-    
     *buffer = '\0';
-    if (is_elided) *is_elided = elided_result;
-    return result;
+    return true;
 }

@@ -59,13 +59,12 @@ elide_string_when_ellipsis_is_too_big_test(void)
     char ellipsis[] = "......";
     char buffer[6];
     char *buffer_end = buffer + sizeof(buffer);
-    bool elided;
+    bool is_elided;
     
-    bool result = elide_string(s, ellipsis, buffer, buffer_end, &elided);
+    bool result = elide_string(s, ellipsis, buffer, buffer_end, &is_elided);
     
     assert(!result);
     ASSERT_STR_EQ("", buffer);
-    assert(!elided);
 }
 
 
@@ -76,13 +75,13 @@ elide_string_when_ellipsis_takes_up_whole_buffer_test(void)
     char ellipsis[] = "...";
     char buffer[4];
     char *buffer_end = buffer + sizeof(buffer);
-    bool elided;
+    bool is_elided;
     
-    bool result = elide_string(s, ellipsis, buffer, buffer_end, &elided);
+    bool result = elide_string(s, ellipsis, buffer, buffer_end, &is_elided);
     
     assert(result);
     ASSERT_STR_EQ("...", buffer);
-    assert(elided);
+    assert(is_elided);
 }
 
 

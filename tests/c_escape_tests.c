@@ -178,6 +178,24 @@ c_escape_string_quotes_test(void)
 }
 
 
+static void
+c_escape_string_for_string_literal_test(void)
+{
+    char const unescaped[] = "\"foo\tbar\"";
+    char escaped[13];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string_for_string_literal(unescaped,
+                                                                escaped,
+                                                                escaped_end);
+    
+    char const *expected_end = unescaped + sizeof unescaped - 1;
+    assert(expected_end == actual_end);
+    assert('\0' == *actual_end);
+    ASSERT_STR_EQ("\\\"" "foo" "\\t" "bar" "\\\"", escaped);
+}
+
+
 void
 c_escape_tests(void)
 {
@@ -188,4 +206,5 @@ c_escape_tests(void)
     c_escape_string_doesnt_write_partial_escapes_test();
     c_escape_string_all_escapes_test();
     c_escape_string_quotes_test();
+    c_escape_string_for_string_literal_test();
 }

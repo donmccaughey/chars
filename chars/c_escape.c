@@ -137,3 +137,22 @@ c_escape_string(char const *unescaped, char *escaped, char *escaped_end)
     return unescaped;
 }
 
+
+char const *
+c_escape_string_for_string_literal(char const *unescaped,
+                                   char *escaped,
+                                   char *escaped_end)
+{
+    escaped_end -= sizeof(char);
+    while (*unescaped) {
+        bool is_full;
+        escaped = add_c_string_escaped_char(*unescaped,
+                                            escaped,
+                                            escaped_end,
+                                            &is_full);
+        if (is_full) break;
+        ++unescaped;
+    }
+    *escaped = '\0';
+    return unescaped;
+}

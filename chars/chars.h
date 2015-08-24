@@ -3,6 +3,7 @@
 
 
 #include <chars/c_escape.h>
+#include <chars/elide.h>
 #include <chars/uint8_convert.h>
 
 

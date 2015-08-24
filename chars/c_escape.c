@@ -118,3 +118,22 @@ c_escape_char_for_string_literal(char unescaped, char escaped[5])
                                                 &is_full);
     *next_char = '\0';
 }
+
+
+char const *
+c_escape_string(char const *unescaped, char *escaped, char *escaped_end)
+{
+    escaped_end -= sizeof(char);
+    while (*unescaped) {
+        bool is_full;
+        escaped = add_c_escaped_char(*unescaped,
+                                     escaped,
+                                     escaped_end,
+                                     &is_full);
+        if (is_full) break;
+        ++unescaped;
+    }
+    *escaped = '\0';
+    return unescaped;
+}
+

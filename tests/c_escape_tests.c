@@ -98,9 +98,94 @@ c_escape_char_for_string_literal_test(void)
 }
 
 
+static void
+c_escape_string_test(void)
+{
+    char const unescaped[] = "foobar";
+    char escaped[7];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string(unescaped, escaped, escaped_end);
+    
+    char const *expected_end = unescaped + sizeof unescaped - 1;
+    assert(expected_end == actual_end);
+    assert('\0' == *actual_end);
+    ASSERT_STR_EQ(unescaped, escaped);
+}
+
+
+static void
+c_escape_string_stops_at_end_of_buffer_test(void)
+{
+    char const unescaped[] = "foobar";
+    char escaped[5];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string(unescaped, escaped, escaped_end);
+    
+    char const *expected_end = unescaped + sizeof unescaped - 3;
+    assert(expected_end == actual_end);
+    assert('a' == *actual_end);
+    ASSERT_STR_EQ("foob", escaped);
+}
+
+
+static void
+c_escape_string_doesnt_write_partial_escapes_test(void)
+{
+    char const unescaped[] = "\037--";
+    char escaped[4];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string(unescaped, escaped, escaped_end);
+    
+    char const *expected_end = unescaped;
+    assert(expected_end == actual_end);
+    assert('\037' == *actual_end);
+    ASSERT_STR_EQ("", escaped);
+}
+
+
+static void
+c_escape_string_all_escapes_test(void)
+{
+    char const unescaped[] = "\a\b\f\n\r\v\037\\";
+    char escaped[40];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string(unescaped, escaped, escaped_end);
+    
+    char const *expected_end = unescaped + sizeof unescaped - 1;
+    assert(expected_end == actual_end);
+    assert('\0' == *actual_end);
+    ASSERT_STR_EQ("\\a" "\\b" "\\f" "\\n" "\\r" "\\v" "\\037" "\\\\", escaped);
+}
+
+
+static void
+c_escape_string_quotes_test(void)
+{
+    char const unescaped[] = "\"'";
+    char escaped[3];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    char const *actual_end = c_escape_string(unescaped, escaped, escaped_end);
+    
+    char const *expected_end = unescaped + sizeof unescaped - 1;
+    assert(expected_end == actual_end);
+    assert('\0' == *actual_end);
+    ASSERT_STR_EQ(unescaped, escaped);
+}
+
+
 void
 c_escape_tests(void)
 {
     c_escape_char_test();
     c_escape_char_for_string_literal_test();
+    c_escape_string_test();
+    c_escape_string_stops_at_end_of_buffer_test();
+    c_escape_string_doesnt_write_partial_escapes_test();
+    c_escape_string_all_escapes_test();
+    c_escape_string_quotes_test();
 }

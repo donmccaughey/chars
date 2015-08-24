@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D41ABC9C1B8AD00700C6C702 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D41ABC9B1B8AD00700C6C702 /* README.md */; };
 		D41ABCB71B8AD2D100C6C702 /* libchars.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D41ABC931B8ACFA300C6C702 /* libchars.a */; };
 		D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCBA1B8AD65400C6C702 /* chars.h */; };
 		D41ABCBF1B8AD66000C6C702 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCBE1B8AD66000C6C702 /* main.c */; };
@@ -212,7 +211,6 @@
 			files = (
 				D41ABCD31B8AD9DE00C6C702 /* c_escape.c in Sources */,
 				D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */,
-				D41ABC9C1B8AD00700C6C702 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

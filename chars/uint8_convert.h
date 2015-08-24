@@ -1,5 +1,5 @@
-#ifndef CHARS_H_INCLUDED
-#define CHARS_H_INCLUDED
+#ifndef CHARS_UINT8_CONVERT_H_INCLUDED
+#define CHARS_UINT8_CONVERT_H_INCLUDED
 
 
 #include <stdint.h>

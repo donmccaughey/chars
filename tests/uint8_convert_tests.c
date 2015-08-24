@@ -1,11 +1,6 @@
-#include <assert.h>
-#include <stdlib.h>
-#include <string.h>
+#include <chars/chars.h>
 
-#include "chars.h"
-
-
-#define ASSERT_STR_EQ(S1, S2) (assert(0 == strcmp((S1), (S2))))
+#include "asserts.h"
 
 
 static void
@@ -58,10 +53,9 @@ uint8_to_octal_chars_test(void)
 }
 
 
-int
-main(int argc, char *argv[])
+void
+uint8_convert_tests(void)
 {
     uint8_to_hex_chars_test();
     uint8_to_octal_chars_test();
-    return EXIT_SUCCESS;
 }

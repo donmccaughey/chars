@@ -1,4 +1,4 @@
-#include "chars.h"
+#include "uint8_convert.h"
 
 
 static char const digit_chars[] = "0123456789abcdef";

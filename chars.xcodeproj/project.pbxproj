@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D41ABC9C1B8AD00700C6C702 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D41ABC9B1B8AD00700C6C702 /* README.md */; };
-		D41ABCA71B8AD10500C6C702 /* chars.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCA61B8AD10500C6C702 /* chars.c */; };
-		D41ABCA91B8AD10F00C6C702 /* chars.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCA81B8AD10F00C6C702 /* chars.h */; };
-		D41ABCB11B8AD1AF00C6C702 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCB01B8AD1AF00C6C702 /* main.c */; };
 		D41ABCB71B8AD2D100C6C702 /* libchars.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D41ABC931B8ACFA300C6C702 /* libchars.a */; };
+		D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCBA1B8AD65400C6C702 /* chars.h */; };
+		D41ABCBF1B8AD66000C6C702 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCBE1B8AD66000C6C702 /* main.c */; };
+		D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */; };
+		D41ABCC31B8AD6A000C6C702 /* uint8_convert.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */; };
+		D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +42,13 @@
 		D41ABC931B8ACFA300C6C702 /* libchars.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libchars.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41ABC9A1B8AD00700C6C702 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		D41ABC9B1B8AD00700C6C702 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D41ABCA61B8AD10500C6C702 /* chars.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = chars.c; sourceTree = "<group>"; };
-		D41ABCA81B8AD10F00C6C702 /* chars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chars.h; sourceTree = "<group>"; };
 		D41ABCAE1B8AD1AF00C6C702 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
-		D41ABCB01B8AD1AF00C6C702 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D41ABCBA1B8AD65400C6C702 /* chars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chars.h; sourceTree = "<group>"; };
+		D41ABCBE1B8AD66000C6C702 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uint8_convert.c; sourceTree = "<group>"; };
+		D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uint8_convert.h; sourceTree = "<group>"; };
+		D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uint8_convert_tests.c; sourceTree = "<group>"; };
+		D41ABCC71B8AD79100C6C702 /* asserts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = asserts.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +75,8 @@
 			children = (
 				D41ABC9A1B8AD00700C6C702 /* LICENSE */,
 				D41ABC9B1B8AD00700C6C702 /* README.md */,
-				D41ABC9D1B8AD03500C6C702 /* src */,
-				D41ABCAF1B8AD1AF00C6C702 /* test */,
+				D41ABCB81B8AD65400C6C702 /* chars */,
+				D41ABCBD1B8AD66000C6C702 /* tests */,
 				D41ABC941B8ACFA300C6C702 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,21 +90,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D41ABC9D1B8AD03500C6C702 /* src */ = {
+		D41ABCB81B8AD65400C6C702 /* chars */ = {
 			isa = PBXGroup;
 			children = (
-				D41ABCA81B8AD10F00C6C702 /* chars.h */,
-				D41ABCA61B8AD10500C6C702 /* chars.c */,
+				D41ABCBA1B8AD65400C6C702 /* chars.h */,
+				D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */,
+				D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */,
 			);
-			path = src;
+			path = chars;
 			sourceTree = "<group>";
 		};
-		D41ABCAF1B8AD1AF00C6C702 /* test */ = {
+		D41ABCBD1B8AD66000C6C702 /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				D41ABCB01B8AD1AF00C6C702 /* main.c */,
+				D41ABCC71B8AD79100C6C702 /* asserts.h */,
+				D41ABCBE1B8AD66000C6C702 /* main.c */,
+				D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */,
 			);
-			path = test;
+			path = tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,7 +117,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41ABCA91B8AD10F00C6C702 /* chars.h in Headers */,
+				D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */,
+				D41ABCC31B8AD6A000C6C702 /* uint8_convert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41ABCA71B8AD10500C6C702 /* chars.c in Sources */,
+				D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */,
 				D41ABC9C1B8AD00700C6C702 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,7 +209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41ABCB11B8AD1AF00C6C702 /* main.c in Sources */,
+				D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */,
+				D41ABCBF1B8AD66000C6C702 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +260,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -286,6 +301,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)",
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -296,6 +316,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -304,6 +328,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

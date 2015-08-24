@@ -14,6 +14,9 @@
 		D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */; };
 		D41ABCC31B8AD6A000C6C702 /* uint8_convert.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */; };
 		D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */; };
+		D41ABCD31B8AD9DE00C6C702 /* c_escape.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCD11B8AD9DE00C6C702 /* c_escape.c */; };
+		D41ABCD41B8AD9DE00C6C702 /* c_escape.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCD21B8AD9DE00C6C702 /* c_escape.h */; };
+		D41ABCD61B8ADBD000C6C702 /* c_escape_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCD51B8ADBD000C6C702 /* c_escape_tests.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uint8_convert.h; sourceTree = "<group>"; };
 		D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uint8_convert_tests.c; sourceTree = "<group>"; };
 		D41ABCC71B8AD79100C6C702 /* asserts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = asserts.h; sourceTree = "<group>"; };
+		D41ABCD11B8AD9DE00C6C702 /* c_escape.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = c_escape.c; sourceTree = "<group>"; };
+		D41ABCD21B8AD9DE00C6C702 /* c_escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c_escape.h; sourceTree = "<group>"; };
+		D41ABCD51B8ADBD000C6C702 /* c_escape_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = c_escape_tests.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,8 @@
 		D41ABCB81B8AD65400C6C702 /* chars */ = {
 			isa = PBXGroup;
 			children = (
+				D41ABCD21B8AD9DE00C6C702 /* c_escape.h */,
+				D41ABCD11B8AD9DE00C6C702 /* c_escape.c */,
 				D41ABCBA1B8AD65400C6C702 /* chars.h */,
 				D41ABCC11B8AD6A000C6C702 /* uint8_convert.h */,
 				D41ABCC01B8AD6A000C6C702 /* uint8_convert.c */,
@@ -104,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D41ABCC71B8AD79100C6C702 /* asserts.h */,
+				D41ABCD51B8ADBD000C6C702 /* c_escape_tests.c */,
 				D41ABCBE1B8AD66000C6C702 /* main.c */,
 				D41ABCC41B8AD77E00C6C702 /* uint8_convert_tests.c */,
 			);
@@ -118,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */,
+				D41ABCD41B8AD9DE00C6C702 /* c_escape.h in Headers */,
 				D41ABCC31B8AD6A000C6C702 /* uint8_convert.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41ABCD31B8AD9DE00C6C702 /* c_escape.c in Sources */,
 				D41ABCC21B8AD6A000C6C702 /* uint8_convert.c in Sources */,
 				D41ABC9C1B8AD00700C6C702 /* README.md in Sources */,
 			);
@@ -211,6 +222,7 @@
 			files = (
 				D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */,
 				D41ABCBF1B8AD66000C6C702 /* main.c in Sources */,
+				D41ABCD61B8ADBD000C6C702 /* c_escape_tests.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +389,7 @@
 				D41ABC991B8ACFA300C6C702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D41ABCB21B8AD1AF00C6C702 /* Build configuration list for PBXNativeTarget "test" */ = {
 			isa = XCConfigurationList;
@@ -385,6 +398,7 @@
 				D41ABCB41B8AD1AF00C6C702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

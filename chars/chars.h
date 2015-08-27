@@ -5,6 +5,7 @@
 #include <chars/c_escape.h>
 #include <chars/case_convert.h>
 #include <chars/elide.h>
+#include <chars/quote.h>
 #include <chars/uint8_convert.h>
 #include <chars/url_encode.h>
 

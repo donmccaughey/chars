@@ -13,7 +13,7 @@
 // the string was elided, `false' if not.
 //
 // If the buffer is too small to contain the ellipsis string, an empty string
-// is placed in the buffer and -1 is returned.
+// is placed in the buffer, `errno' is set to EINVAL, and -1 is returned.
 int
 elide_string(char const *string,
              char const *ellipsis,

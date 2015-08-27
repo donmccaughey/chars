@@ -1,5 +1,7 @@
 #include <chars/chars.h>
 
+#include <errno.h>
+
 #include "asserts.h"
 
 
@@ -60,10 +62,12 @@ elide_string_when_ellipsis_is_too_big_test(void)
     char buffer[6];
     char *buffer_end = buffer + sizeof buffer ;
     bool is_elided;
+    errno = 0;
     
     int result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
     
     assert(-1 == result);
+    assert(EINVAL == errno);
     ASSERT_STR_EQ("", buffer);
 }
 

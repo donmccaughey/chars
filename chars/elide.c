@@ -1,5 +1,7 @@
 #include "elide.h"
 
+#include <errno.h>
+
 
 static bool
 backup_and_replace_suffix(char *start, char *end, char const *suffix)
@@ -28,6 +30,7 @@ elide_string(char const *string,
     if (*string) {
         if (!backup_and_replace_suffix(buffer_start, buffer, ellipsis)) {
             *buffer_start = '\0';
+            errno = EINVAL;
             return -1;
         }
         if (is_elided) *is_elided = true;

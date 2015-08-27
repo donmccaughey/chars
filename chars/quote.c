@@ -1,5 +1,7 @@
 #include "quote.h"
 
+#include <errno.h>
+
 
 int
 quote_string(char const *string,
@@ -24,6 +26,7 @@ quote_string(char const *string,
         return 0;
     } else {
         *buffer_start = '\0';
+        errno = EINVAL;
         return -1;
     }
 }

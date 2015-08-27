@@ -12,9 +12,9 @@ elide_string_when_string_fits_buffer_test(void)
     char *buffer_end = buffer + sizeof buffer;
     bool is_elided;
     
-    bool result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
+    int result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
     
-    assert(result);
+    assert(0 == result);
     ASSERT_STR_EQ(string, buffer);
     assert(!is_elided);
 }
@@ -28,9 +28,9 @@ elide_string_when_is_elided_is_NULL_test(void)
     char buffer[10];
     char *buffer_end = buffer + sizeof buffer;
     
-    bool result = elide_string(string, ellipsis, buffer, buffer_end, NULL);
+    int result = elide_string(string, ellipsis, buffer, buffer_end, NULL);
     
-    assert(result);
+    assert(0 == result);
     ASSERT_STR_EQ(string, buffer);
 }
 
@@ -44,9 +44,9 @@ elide_string_when_string_is_too_big_test(void)
     char *buffer_end = buffer + sizeof buffer ;
     bool is_elided;
     
-    bool result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
+    int result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
     
-    assert(result);
+    assert(0 == result);
     ASSERT_STR_EQ("foofoo...", buffer);
     assert(is_elided);
 }
@@ -61,9 +61,9 @@ elide_string_when_ellipsis_is_too_big_test(void)
     char *buffer_end = buffer + sizeof buffer ;
     bool is_elided;
     
-    bool result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
+    int result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
     
-    assert(!result);
+    assert(-1 == result);
     ASSERT_STR_EQ("", buffer);
 }
 
@@ -77,9 +77,9 @@ elide_string_when_ellipsis_takes_up_whole_buffer_test(void)
     char *buffer_end = buffer + sizeof buffer ;
     bool is_elided;
     
-    bool result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
+    int result = elide_string(string, ellipsis, buffer, buffer_end, &is_elided);
     
-    assert(result);
+    assert(0 == result);
     ASSERT_STR_EQ("...", buffer);
     assert(is_elided);
 }

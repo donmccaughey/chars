@@ -15,7 +15,7 @@ backup_and_replace_suffix(char *start, char *end, char const *suffix)
 }
 
 
-bool
+int
 elide_string(char const *string,
              char const *ellipsis,
              char *buffer,
@@ -28,12 +28,12 @@ elide_string(char const *string,
     if (*string) {
         if (!backup_and_replace_suffix(buffer_start, buffer, ellipsis)) {
             *buffer_start = '\0';
-            return false;
+            return -1;
         }
         if (is_elided) *is_elided = true;
     } else {
         if (is_elided) *is_elided = false;
     }
     *buffer = '\0';
-    return true;
+    return 0;
 }

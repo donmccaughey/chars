@@ -10,8 +10,8 @@ quote_string_test(void)
     char buffer[12];
     char *buffer_end = buffer + sizeof buffer;
     
-    bool result = quote_string(string, "<%=", "%>", buffer, buffer_end);
-    assert(result);
+    int result = quote_string(string, "<%=", "%>", buffer, buffer_end);
+    assert(0 == result);
     ASSERT_STR_EQ("<%=foobar%>", buffer);
 }
 
@@ -23,8 +23,8 @@ quote_string_for_empty_quotes_test(void)
     char buffer[7];
     char *buffer_end = buffer + sizeof buffer;
     
-    bool result = quote_string(string, "", "", buffer, buffer_end);
-    assert(result);
+    int result = quote_string(string, "", "", buffer, buffer_end);
+    assert(0 == result);
     ASSERT_STR_EQ("foobar", buffer);
 }
 
@@ -36,8 +36,8 @@ quote_string_for_buffer_too_small_test(void)
     char buffer[8];
     char *buffer_end = buffer + sizeof buffer;
     
-    bool result = quote_string(string, "<%=", "%>", buffer, buffer_end);
-    assert(!result);
+    int result = quote_string(string, "<%=", "%>", buffer, buffer_end);
+    assert(-1 == result);
     ASSERT_STR_EQ("", buffer);
 }
 

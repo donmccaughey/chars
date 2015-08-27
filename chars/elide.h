@@ -8,13 +8,13 @@
 // Elide a null terminated string if it is too long.  The string is copied into
 // the given buffer.  If it fits, it is copied unchanged.  If it is too long,
 // as many characters as possible are copied and the given ellipsis string is
-// appended.  In both cases, the copied string is null terminated and true is
-// returned.  If `is_elided' is not NULL, sets `*is_elided' to `true' if the
-// string was elided, `false' if not.
+// appended.  In both cases, the copied string is null terminated and 0 is
+// returned.  If `is_elided' is not NULL, then `*is_elided' is set to `true' if
+// the string was elided, `false' if not.
 //
 // If the buffer is too small to contain the ellipsis string, an empty string
-// is placed in the buffer and false is returned.
-bool
+// is placed in the buffer and -1 is returned.
+int
 elide_string(char const *string,
              char const *ellipsis,
              char *buffer,

@@ -1,7 +1,7 @@
 #include "quote.h"
 
 
-bool
+int
 quote_string(char const *string,
              char const *prefix,
              char const *suffix,
@@ -21,9 +21,9 @@ quote_string(char const *string,
     }
     if (i == 3) {
         *buffer = '\0';
-        return true;
+        return 0;
     } else {
         *buffer_start = '\0';
-        return false;
+        return -1;
     }
 }

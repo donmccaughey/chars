@@ -9,12 +9,9 @@ quote_string(char const *string,
              char *buffer_end)
 {
     char *buffer_start = buffer;
-    char const *sources[3];
-    int i = 0;
+    char const *sources[3] = { prefix, string, suffix };
     
-    sources[0] = prefix;
-    sources[1] = string;
-    sources[2] = suffix;
+    int i = 0;
     while (i < 3 && buffer < buffer_end) {
         if (*sources[i]) {
             *buffer++ = *sources[i]++;

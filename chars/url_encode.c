@@ -69,16 +69,8 @@ url_encode_char(char unencoded, char encoded[4])
 char const *
 url_encode_string(char const *unencoded, char *encoded, char *encoded_end)
 {
-    encoded_end -= sizeof(char);
-    bool is_full;
-    while (*unencoded) {
-        encoded = add_url_encoded_char(*unencoded,
-                                       encoded,
-                                       encoded_end,
-                                       &is_full);
-        if (is_full) break;
-        ++unencoded;
-    }
-    *encoded = '\0';
-    return unencoded;
+    return transform_string(unencoded,
+                            add_url_encoded_char,
+                            encoded,
+                            encoded_end);
 }

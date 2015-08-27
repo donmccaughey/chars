@@ -36,6 +36,9 @@ c_escape_char_for_string_literal(char unescaped, char escaped[5]);
 // points to the null terminator in the unescaped string.  If the buffer is not
 // big enough to fit the full escaped string, the returned value points to the
 // first unescaped character in the unescaped string.
+//
+// If any of the arguments are NULL, `errno' is set to EFAULT and NULL is
+// returned.
 char const *
 c_escape_string(char const *unescaped, char *escaped, char *escaped_end);
 
@@ -59,6 +62,9 @@ c_escape_string(char const *unescaped, char *escaped, char *escaped_end);
 // points to the null terminator in the unescaped string.  If the buffer is not
 // big enough to fit the full escaped string, the returned value points to the
 // first unescaped character in the unescaped string.
+//
+// If any of the arguments are NULL, `errno' is set to EFAULT and NULL is
+// returned.
 char const *
 c_escape_string_for_string_literal(char const *unescaped,
                                    char *escaped,

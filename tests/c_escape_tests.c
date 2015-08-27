@@ -1,5 +1,7 @@
 #include <chars/chars.h>
 
+#include <errno.h>
+
 #include "asserts.h"
 
 
@@ -179,6 +181,30 @@ c_escape_string_quotes_test(void)
 
 
 static void
+c_escape_string_NULL_arguments_test(void)
+{
+    char const unescaped[] = "foobar";
+    char escaped[7];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    errno = 0;
+    char const *actual_end = c_escape_string(NULL, escaped, escaped_end);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+    
+    errno = 0;
+    actual_end = c_escape_string(unescaped, NULL, escaped_end);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+    
+    errno = 0;
+    actual_end = c_escape_string(unescaped, escaped, NULL);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+}
+
+
+static void
 c_escape_string_for_string_literal_test(void)
 {
     char const unescaped[] = "\"foo\tbar\"";
@@ -196,15 +222,47 @@ c_escape_string_for_string_literal_test(void)
 }
 
 
+static void
+c_escape_string_for_string_literal_NULL_arguments_test(void)
+{
+    char const unescaped[] = "foobar";
+    char escaped[7];
+    char *escaped_end = escaped + sizeof escaped;
+    
+    errno = 0;
+    char const *actual_end = c_escape_string_for_string_literal(NULL,
+                                                                escaped,
+                                                                escaped_end);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+    
+    errno = 0;
+    actual_end = c_escape_string_for_string_literal(unescaped,
+                                                    NULL,
+                                                    escaped_end);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+    
+    errno = 0;
+    actual_end = c_escape_string_for_string_literal(unescaped, escaped, NULL);
+    assert(NULL == actual_end);
+    assert(EFAULT == errno);
+}
+
+
 void
 c_escape_tests(void)
 {
     c_escape_char_test();
     c_escape_char_for_string_literal_test();
+    
     c_escape_string_test();
     c_escape_string_stops_at_end_of_buffer_test();
     c_escape_string_doesnt_write_partial_escapes_test();
     c_escape_string_all_escapes_test();
     c_escape_string_quotes_test();
+    c_escape_string_NULL_arguments_test();
+    
     c_escape_string_for_string_literal_test();
+    c_escape_string_for_string_literal_NULL_arguments_test();
 }

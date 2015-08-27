@@ -1,5 +1,6 @@
 #include "c_escape.h"
 
+#include <errno.h>
 #include <stdbool.h>
 
 #include "add_char.h"
@@ -111,6 +112,11 @@ c_escape_char_for_string_literal(char unescaped, char escaped[5])
 char const *
 c_escape_string(char const *unescaped, char *escaped, char *escaped_end)
 {
+    if (!unescaped || !escaped || !escaped_end) {
+        errno = EFAULT;
+        return NULL;
+    }
+    
     escaped_end -= sizeof(char);
     while (*unescaped) {
         bool is_full;
@@ -131,6 +137,11 @@ c_escape_string_for_string_literal(char const *unescaped,
                                    char *escaped,
                                    char *escaped_end)
 {
+    if (!unescaped || !escaped || !escaped_end) {
+        errno = EFAULT;
+        return NULL;
+    }
+    
     escaped_end -= sizeof(char);
     while (*unescaped) {
         bool is_full;

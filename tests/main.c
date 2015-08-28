@@ -14,6 +14,9 @@ void
 quote_tests(void);
 
 void
+transform_tests(void);
+
+void
 uint8_convert_tests(void);
 
 void
@@ -27,6 +30,7 @@ main(int argc, char *argv[])
     case_convert_tests();
     elide_tests();
     quote_tests();
+    transform_tests();
     uint8_convert_tests();
     url_encode_tests();
     return EXIT_SUCCESS;

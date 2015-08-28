@@ -2,7 +2,7 @@
 
 #include <stdbool.h>
 
-#include "add_char.h"
+#include "transform.h"
 #include "uint8_convert.h"
 
 
@@ -41,9 +41,9 @@ add_url_encoded_char(char unencoded,
         || unencoded == '.'
         || unencoded == '~')
     {
-        return add_char(unencoded, encoded, encoded_end, is_full);
+        return add_untransformed_char(unencoded, encoded, encoded_end, is_full);
     } else if (unencoded == ' ') {
-        return add_char('+', encoded, encoded_end, is_full);
+        return add_untransformed_char('+', encoded, encoded_end, is_full);
     } else {
         return add_percent_encoded_char(unencoded,
                                         encoded,

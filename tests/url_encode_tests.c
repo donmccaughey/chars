@@ -82,22 +82,6 @@ url_encode_string_for_unsafe_chars_test(void)
 
 
 static void
-url_encode_string_stops_at_end_of_buffer_test(void)
-{
-    char const unencoded[] = "foobar";
-    char encoded[5];
-    char *encoded_end = encoded + sizeof encoded;
-    
-    char const *actual_end = url_encode_string(unencoded, encoded, encoded_end);
-    
-    char const *expected_end = unencoded + sizeof unencoded - 3;
-    assert(expected_end == actual_end);
-    assert('a' == *actual_end);
-    ASSERT_STR_EQ("foob", encoded);
-}
-
-
-static void
 url_encode_string_doesnt_write_partial_escapes_test(void)
 {
     char const unencoded[] = "///";
@@ -116,8 +100,8 @@ url_encode_string_doesnt_write_partial_escapes_test(void)
 void
 url_encode_tests(void)
 {
+    url_encode_char_test();
     url_encode_string_for_safe_chars_test();
     url_encode_string_for_unsafe_chars_test();
-    url_encode_string_stops_at_end_of_buffer_test();
     url_encode_string_doesnt_write_partial_escapes_test();
 }

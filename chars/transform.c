@@ -1,10 +1,10 @@
-#include "add_char.h"
+#include "transform.h"
 
 #include <errno.h>
 
 
 char *
-add_char(char ch, char *buffer, char *buffer_end, bool *is_full)
+add_untransformed_char(char ch, char *buffer, char *buffer_end, bool *is_full)
 {
     if (buffer_end == buffer) {
         *is_full = true;
@@ -22,8 +22,12 @@ transform_string(char const *source,
                  char *destination,
                  char *destination_end)
 {
-    if (!source || !destination || !destination_end) {
+    if (!source || !add_transformed_char || !destination || !destination_end) {
         errno = EFAULT;
+        return NULL;
+    }
+    if (destination_end - destination < 1) {
+        errno = EINVAL;
         return NULL;
     }
     

@@ -3,7 +3,7 @@
 #include <errno.h>
 #include <stdbool.h>
 
-#include "add_char.h"
+#include "transform.h"
 #include "uint8_convert.h"
 
 
@@ -64,7 +64,7 @@ add_c_escaped_char(char unescaped,
     } else if (unescaped == '\\') {
         return add_named_escape('\\', escaped, escaped_end, is_full);
     } else {
-        return add_char(unescaped, escaped, escaped_end, is_full);
+        return add_untransformed_char(unescaped, escaped, escaped_end, is_full);
     }
 }
 

@@ -8,7 +8,7 @@
 // generate a string containing the character.  Single and double quotes are
 // not escaped.
 void
-c_escape_char(char unescaped, char escaped[5]);
+c_escape_char(char ch, char buffer[5]);
 
 // Escape a character using C language escape sequences for inclusion in a
 // double quoted string.  Generates a null terminated string in the given
@@ -17,10 +17,10 @@ c_escape_char(char unescaped, char escaped[5]);
 // string containing the character.  The resulting string is suitable for
 // inclusion in a C string literal or other double quoted string.
 void
-c_escape_char_for_string_literal(char unescaped, char escaped[5]);
+c_escape_char_for_string_literal(char ch, char buffer[5]);
 
 // Escape a null terminated string using C language escape sequences.  The
-// escaped string is written to the buffer given by [escaped, escaped_end).  If
+// escaped string is written to the buffer given by [buffer, buffer_end).  If
 // the buffer is not large enough to contain the complete escaped string, it
 // will contain as many escaped character sequences as will fit.  The buffer is
 // always null terminated.
@@ -40,11 +40,11 @@ c_escape_char_for_string_literal(char unescaped, char escaped[5]);
 // If any of the arguments are NULL, `errno' is set to EFAULT and NULL is
 // returned.
 char const *
-c_escape_string(char const *unescaped, char *escaped, char *escaped_end);
+c_escape_string(char const *source, char *buffer, char *buffer_end);
 
 // Escape a null terminated string using C language escape sequences for
 // inclusion in a double quoted string.  The escaped string is written to the
-// buffer given by [escaped, escaped_end).  If the buffer is not large enough
+// buffer given by [buffer, buffer_end).  If the buffer is not large enough
 // to contain the complete escaped string, it will contain as many escaped
 // character sequences as will fit.  The buffer is always null terminated.
 //
@@ -66,9 +66,9 @@ c_escape_string(char const *unescaped, char *escaped, char *escaped_end);
 // If any of the arguments are NULL, `errno' is set to EFAULT and NULL is
 // returned.
 char const *
-c_escape_string_for_string_literal(char const *unescaped,
-                                   char *escaped,
-                                   char *escaped_end);
+c_escape_string_for_string_literal(char const *ch,
+                                   char *buffer,
+                                   char *buffer_end);
 
 
 #endif

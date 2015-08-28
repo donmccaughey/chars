@@ -4,14 +4,14 @@
 
 
 int
-quote_string(char const *string,
+quote_string(char const *source,
              char const *prefix,
              char const *suffix,
              char *buffer,
              char *buffer_end)
 {
     char *buffer_start = buffer;
-    char const *sources[3] = { prefix, string, suffix };
+    char const *sources[3] = { prefix, source, suffix };
     
     int i = 0;
     while (i < 3 && buffer < buffer_end) {

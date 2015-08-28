@@ -41,20 +41,19 @@ add_url_encoded_char(char ch, char **buffer, char *buffer_end)
 
 
 void
-url_encode_char(char unencoded, char encoded[4])
+url_encode_char(char ch, char buffer[4])
 {
-    char *buffer = encoded;
-    char *buffer_end = encoded + sizeof(char[4]) - sizeof(char);
-    add_url_encoded_char(unencoded, &buffer, buffer_end);
+    char *buffer_end = buffer + sizeof(char[4]) - sizeof(char);
+    add_url_encoded_char(ch, &buffer, buffer_end);
     *buffer = '\0';
 }
 
 
 char const *
-url_encode_string(char const *unencoded, char *encoded, char *encoded_end)
+url_encode_string(char const *source, char *buffer, char *buffer_end)
 {
-    return transform_string(unencoded,
+    return transform_string(source,
                             add_url_encoded_char,
-                            encoded,
-                            encoded_end);
+                            buffer,
+                            buffer_end);
 }

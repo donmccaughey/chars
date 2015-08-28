@@ -6,94 +6,94 @@
 static void
 url_encode_char_test(void)
 {
-    char encoded[4];
+    char buffer[4];
     
-    url_encode_char('A', encoded);
-    ASSERT_STR_EQ("A", encoded);
+    url_encode_char('A', buffer);
+    ASSERT_STR_EQ("A", buffer);
     
-    url_encode_char('Z', encoded);
-    ASSERT_STR_EQ("Z", encoded);
+    url_encode_char('Z', buffer);
+    ASSERT_STR_EQ("Z", buffer);
     
-    url_encode_char('a', encoded);
-    ASSERT_STR_EQ("a", encoded);
+    url_encode_char('a', buffer);
+    ASSERT_STR_EQ("a", buffer);
     
-    url_encode_char('z', encoded);
-    ASSERT_STR_EQ("z", encoded);
+    url_encode_char('z', buffer);
+    ASSERT_STR_EQ("z", buffer);
     
-    url_encode_char('0', encoded);
-    ASSERT_STR_EQ("0", encoded);
+    url_encode_char('0', buffer);
+    ASSERT_STR_EQ("0", buffer);
     
-    url_encode_char('9', encoded);
-    ASSERT_STR_EQ("9", encoded);
+    url_encode_char('9', buffer);
+    ASSERT_STR_EQ("9", buffer);
     
-    url_encode_char('-', encoded);
-    ASSERT_STR_EQ("-", encoded);
+    url_encode_char('-', buffer);
+    ASSERT_STR_EQ("-", buffer);
     
-    url_encode_char('_', encoded);
-    ASSERT_STR_EQ("_", encoded);
+    url_encode_char('_', buffer);
+    ASSERT_STR_EQ("_", buffer);
     
-    url_encode_char('.', encoded);
-    ASSERT_STR_EQ(".", encoded);
+    url_encode_char('.', buffer);
+    ASSERT_STR_EQ(".", buffer);
     
-    url_encode_char('~', encoded);
-    ASSERT_STR_EQ("~", encoded);
+    url_encode_char('~', buffer);
+    ASSERT_STR_EQ("~", buffer);
     
-    url_encode_char(' ', encoded);
-    ASSERT_STR_EQ("+", encoded);
+    url_encode_char(' ', buffer);
+    ASSERT_STR_EQ("+", buffer);
     
-    url_encode_char('/', encoded);
-    ASSERT_STR_EQ("%2f", encoded);
+    url_encode_char('/', buffer);
+    ASSERT_STR_EQ("%2f", buffer);
     
-    url_encode_char('?', encoded);
-    ASSERT_STR_EQ("%3f", encoded);
+    url_encode_char('?', buffer);
+    ASSERT_STR_EQ("%3f", buffer);
 }
 
 
 static void
 url_encode_string_for_safe_chars_test(void)
 {
-    char const unencoded[] = "foobar";
-    char encoded[7];
-    char *encoded_end = encoded + sizeof encoded;
+    char const source[] = "foobar";
+    char buffer[7];
+    char *buffer_end = buffer + sizeof buffer;
     
-    char const *actual_end = url_encode_string(unencoded, encoded, encoded_end);
+    char const *actual_end = url_encode_string(source, buffer, buffer_end);
     
-    char const *expected_end = unencoded + sizeof unencoded - 1;
+    char const *expected_end = source + sizeof source - 1;
     assert(expected_end == actual_end);
     assert('\0' == *actual_end);
-    ASSERT_STR_EQ(unencoded, encoded);
+    ASSERT_STR_EQ(source, buffer);
 }
 
 
 static void
 url_encode_string_for_unsafe_chars_test(void)
 {
-    char const unencoded[] = "\t\n\r !%&+/=";
-    char encoded[31];
-    char *encoded_end = encoded + sizeof encoded;
+    char const source[] = "\t\n\r !%&+/=";
+    char buffer[31];
+    char *buffer_end = buffer + sizeof buffer;
     
-    char const *actual_end = url_encode_string(unencoded, encoded, encoded_end);
+    char const *actual_end = url_encode_string(source, buffer, buffer_end);
     
-    char const *expected_end = unencoded + sizeof unencoded - 1;
+    char const *expected_end = source + sizeof source - 1;
     assert(expected_end == actual_end);
     assert('\0' == *actual_end);
-    ASSERT_STR_EQ("%09" "%0a" "%0d" "+" "%21" "%25" "%26" "%2b" "%2f" "%3d", encoded);
+    ASSERT_STR_EQ("%09" "%0a" "%0d" "+" "%21" "%25" "%26" "%2b" "%2f" "%3d", buffer);
 }
 
 
 static void
 url_encode_string_doesnt_write_partial_escapes_test(void)
 {
-    char const unencoded[] = "///";
-    char encoded[9];
-    char *encoded_end = encoded + sizeof encoded;
+    char const source[] = "///";
+    char buffer[9];
+    char *buffer_end = buffer + sizeof buffer;
     
-    char const *actual_end = url_encode_string(unencoded, encoded, encoded_end);
+    char const *actual_end = url_encode_string(source, buffer, buffer_end);
     
-    char const *expected_end = unencoded + 2;
+    char const *expected_end = source + 2;
     assert(expected_end == actual_end);
     assert('/' == *actual_end);
-    ASSERT_STR_EQ("%2f%2f", encoded);
+    ASSERT_STR_EQ("%2f%2f", buffer);
 }
 
 

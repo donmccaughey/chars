@@ -8,11 +8,11 @@
 static void
 quote_string_test(void)
 {
-    char const string[] = "foobar";
+    char const source[] = "foobar";
     char buffer[12];
     char *buffer_end = buffer + sizeof buffer;
     
-    int result = quote_string(string, "<%=", "%>", buffer, buffer_end);
+    int result = quote_string(source, "<%=", "%>", buffer, buffer_end);
     assert(0 == result);
     ASSERT_STR_EQ("<%=foobar%>", buffer);
 }
@@ -21,11 +21,11 @@ quote_string_test(void)
 static void
 quote_string_for_empty_quotes_test(void)
 {
-    char const string[] = "foobar";
+    char const source[] = "foobar";
     char buffer[7];
     char *buffer_end = buffer + sizeof buffer;
     
-    int result = quote_string(string, "", "", buffer, buffer_end);
+    int result = quote_string(source, "", "", buffer, buffer_end);
     
     assert(0 == result);
     ASSERT_STR_EQ("foobar", buffer);
@@ -35,12 +35,12 @@ quote_string_for_empty_quotes_test(void)
 static void
 quote_string_for_buffer_too_small_test(void)
 {
-    char const string[] = "foobar";
+    char const source[] = "foobar";
     char buffer[8];
     char *buffer_end = buffer + sizeof buffer;
     errno = 0;
     
-    int result = quote_string(string, "<%=", "%>", buffer, buffer_end);
+    int result = quote_string(source, "<%=", "%>", buffer, buffer_end);
     
     assert(EINVAL == errno);
     assert(-1 == result);

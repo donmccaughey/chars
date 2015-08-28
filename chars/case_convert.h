@@ -12,7 +12,7 @@
 // enough to fit the full upper case string, the returned value points to the
 // first unconverted character in the input string.
 char const *
-upper_case_string(char const *string, char *buffer, char *buffer_end);
+upper_case_string(char const *source, char *buffer, char *buffer_end);
 
 
 #endif

@@ -4,14 +4,14 @@
 
 
 char const *
-upper_case_string(char const *string, char *buffer, char *buffer_end)
+upper_case_string(char const *source, char *buffer, char *buffer_end)
 {
-    while (*string) {
-        *buffer = toupper(*string);
+    while (*source) {
+        *buffer = toupper(*source);
         ++buffer;
         if (buffer_end == buffer) break;
-        ++string;
+        ++source;
     }
     *buffer = '\0';
-    return string;
+    return source;
 }

@@ -12,7 +12,7 @@
 // A buffer of size (strlen(prefix) + strlen(s) + strlen(suffix) + 1) will
 // guarantee that the complete wrapped string plus null terminator will fit.
 int
-quote_string(char const *string,
+quote_string(char const *source,
              char const *prefix,
              char const *suffix,
              char *buffer,

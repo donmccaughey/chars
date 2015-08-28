@@ -18,7 +18,7 @@ backup_and_replace_suffix(char *start, char *end, char const *suffix)
 
 
 int
-elide_string(char const *string,
+elide_string(char const *source,
              char const *ellipsis,
              char *buffer,
              char *buffer_end,
@@ -26,8 +26,8 @@ elide_string(char const *string,
 {
     char *buffer_start = buffer;
     buffer_end -= sizeof(char);
-    while (*string && buffer < buffer_end) *buffer++ = *string++;
-    if (*string) {
+    while (*source && buffer < buffer_end) *buffer++ = *source++;
+    if (*source) {
         if (!backup_and_replace_suffix(buffer_start, buffer, ellipsis)) {
             *buffer_start = '\0';
             errno = EINVAL;

@@ -18,22 +18,22 @@ add_untransformed_char(char ch, char **buffer, char *buffer_end)
 char const *
 transform_string(char const *source,
                  add_transformed_char_fn add_transformed_char,
-                 char *destination,
-                 char *destination_end)
+                 char *buffer,
+                 char *buffer_end)
 {
-    if (!source || !add_transformed_char || !destination || !destination_end) {
+    if (!source || !add_transformed_char || !buffer || !buffer_end) {
         errno = EFAULT;
         return NULL;
     }
-    if (destination_end - destination < 1) {
+    if (buffer_end - buffer < 1) {
         errno = EINVAL;
         return NULL;
     }
     
-    destination_end -= sizeof(char);
-    while (*source && add_transformed_char(*source, &destination, destination_end)) {
+    buffer_end -= sizeof(char);
+    while (*source && add_transformed_char(*source, &buffer, buffer_end)) {
         ++source;
     }
-    *destination = '\0';
+    *buffer = '\0';
     return source;
 }

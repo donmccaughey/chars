@@ -37,8 +37,8 @@ add_untransformed_char(char ch, char **buffer, char *buffer_end);
 char const *
 transform_string(char const *source,
                  add_transformed_char_fn add_transformed_char,
-                 char *destination,
-                 char *destination_end);
+                 char *buffer,
+                 char *buffer_end);
 
 
 #endif

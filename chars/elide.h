@@ -15,7 +15,7 @@
 // If the buffer is too small to contain the ellipsis string, an empty string
 // is placed in the buffer, `errno' is set to EINVAL, and -1 is returned.
 int
-elide_string(char const *string,
+elide_string(char const *source,
              char const *ellipsis,
              char *buffer,
              char *buffer_end,

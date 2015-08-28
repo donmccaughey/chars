@@ -9,13 +9,13 @@
 // other characters generate a string containing a percent followed by the two
 // digit hexadecimal value of the character.
 void
-url_encode_char(char unencoded, char encoded[4]);
+url_encode_char(char ch, char buffer[4]);
 
 
 // URL encode a null terminated string suitable for use in a URL query string
 // or HTML form post.
 //
-// The encoded string is written to the buffer given by [encoded, encoded_end).
+// The encoded string is written to the buffer given by [buffer, buffer_end).
 // If the buffer is not large enough to contain the complete encoded string, it
 // will contain as many encoded character sequences as will fit.  The buffer
 // is always null terminated.
@@ -34,7 +34,7 @@ url_encode_char(char unencoded, char encoded[4]);
 // big enough to fit the full URL encoded string, the returned value points to
 // the first unencoded character in the unencoded string.
 char const *
-url_encode_string(char const *unencoded, char *encoded, char *encoded_end);
+url_encode_string(char const *source, char *buffer, char *buffer_end);
 
 
 #endif

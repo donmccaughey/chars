@@ -6,13 +6,13 @@
 static void
 upper_case_string_test(void)
 {
-    char const string[] = "fooBAR";
+    char const source[] = "fooBAR";
     char buffer[7];
     char *buffer_end = buffer + sizeof buffer;
     
-    char const *actual_end = upper_case_string(string, buffer, buffer_end);
+    char const *actual_end = upper_case_string(source, buffer, buffer_end);
     
-    char const *expected_end = string + sizeof string - 1;
+    char const *expected_end = source + sizeof source - 1;
     
     assert(expected_end == actual_end);
     assert('\0' == *actual_end);

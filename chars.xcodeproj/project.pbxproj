@@ -31,6 +31,9 @@
 		D41ABCF01B8E996900C6C702 /* quote.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCEE1B8E996900C6C702 /* quote.h */; };
 		D41ABCF21B8E9F3800C6C702 /* quote_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCF11B8E9F3800C6C702 /* quote_tests.c */; };
 		D41ABCF41B90386100C6C702 /* transform_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCF31B90386100C6C702 /* transform_tests.c */; };
+		D41ABCF71B90EB2000C6C702 /* char_class.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCF51B90EB2000C6C702 /* char_class.c */; };
+		D41ABCF81B90EB2000C6C702 /* char_class.h in Headers */ = {isa = PBXBuildFile; fileRef = D41ABCF61B90EB2000C6C702 /* char_class.h */; };
+		D41ABCFA1B90F0DB00C6C702 /* char_class_tests.c in Sources */ = {isa = PBXBuildFile; fileRef = D41ABCF91B90F0DB00C6C702 /* char_class_tests.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		D41ABCEE1B8E996900C6C702 /* quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quote.h; sourceTree = "<group>"; };
 		D41ABCF11B8E9F3800C6C702 /* quote_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quote_tests.c; sourceTree = "<group>"; };
 		D41ABCF31B90386100C6C702 /* transform_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = transform_tests.c; sourceTree = "<group>"; };
+		D41ABCF51B90EB2000C6C702 /* char_class.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = char_class.c; sourceTree = "<group>"; };
+		D41ABCF61B90EB2000C6C702 /* char_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = char_class.h; sourceTree = "<group>"; };
+		D41ABCF91B90F0DB00C6C702 /* char_class_tests.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = char_class_tests.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,8 @@
 				D41ABCD11B8AD9DE00C6C702 /* c_escape.c */,
 				D41ABCDE1B8BD9EE00C6C702 /* case_convert.h */,
 				D41ABCDD1B8BD9EE00C6C702 /* case_convert.c */,
+				D41ABCF61B90EB2000C6C702 /* char_class.h */,
+				D41ABCF51B90EB2000C6C702 /* char_class.c */,
 				D41ABCBA1B8AD65400C6C702 /* chars.h */,
 				D41ABCD81B8BC6BF00C6C702 /* elide.h */,
 				D41ABCD71B8BC6BF00C6C702 /* elide.c */,
@@ -153,6 +161,7 @@
 				D41ABCC71B8AD79100C6C702 /* asserts.h */,
 				D41ABCD51B8ADBD000C6C702 /* c_escape_tests.c */,
 				D41ABCE11B8BDD5F00C6C702 /* case_convert_tests.c */,
+				D41ABCF91B90F0DB00C6C702 /* char_class_tests.c */,
 				D41ABCDB1B8BC82900C6C702 /* elide_tests.c */,
 				D41ABCBE1B8AD66000C6C702 /* main.c */,
 				D41ABCF11B8E9F3800C6C702 /* quote_tests.c */,
@@ -170,6 +179,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41ABCF81B90EB2000C6C702 /* char_class.h in Headers */,
 				D41ABCDA1B8BC6BF00C6C702 /* elide.h in Headers */,
 				D41ABCE01B8BD9EE00C6C702 /* case_convert.h in Headers */,
 				D41ABCBC1B8AD65400C6C702 /* chars.h in Headers */,
@@ -267,6 +277,7 @@
 				D41ABCDF1B8BD9EE00C6C702 /* case_convert.c in Sources */,
 				D41ABCF21B8E9F3800C6C702 /* quote_tests.c in Sources */,
 				D41ABCEB1B8BE17000C6C702 /* transform.c in Sources */,
+				D41ABCF71B90EB2000C6C702 /* char_class.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41ABCFA1B90F0DB00C6C702 /* char_class_tests.c in Sources */,
 				D41ABCC61B8AD77E00C6C702 /* uint8_convert_tests.c in Sources */,
 				D41ABCF41B90386100C6C702 /* transform_tests.c in Sources */,
 				D41ABCE21B8BDD5F00C6C702 /* case_convert_tests.c in Sources */,

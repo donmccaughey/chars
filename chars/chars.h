@@ -3,6 +3,7 @@
 
 
 #include <chars/c_escape.h>
+#include <chars/char_class.h>
 #include <chars/case_convert.h>
 #include <chars/elide.h>
 #include <chars/quote.h>

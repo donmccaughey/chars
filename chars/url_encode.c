@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 
+#include "char_class.h"
 #include "transform.h"
 #include "uint8_convert.h"
 
@@ -23,14 +24,7 @@ add_percent_encoded_char(uint8_t char_value, char **buffer, char *buffer_end)
 static bool
 add_url_encoded_char(char ch, char **buffer, char *buffer_end)
 {
-    if (   (ch >= 'A' && ch <= 'Z')
-        || (ch >= 'a' && ch <= 'z')
-        || (ch >= '0' && ch <= '9')
-        || ch == '-'
-        || ch == '_'
-        || ch == '.'
-        || ch == '~')
-    {
+    if (is_url_encode_unreserved_char(ch)) {
         return add_untransformed_char(ch, buffer, buffer_end);
     } else if (ch == ' ') {
         return add_untransformed_char('+', buffer, buffer_end);

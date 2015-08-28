@@ -8,6 +8,9 @@ void
 case_convert_tests(void);
 
 void
+char_class_tests(void);
+
+void
 elide_tests(void);
 
 void
@@ -28,6 +31,7 @@ main(int argc, char *argv[])
 {
     c_escape_tests();
     case_convert_tests();
+    char_class_tests();
     elide_tests();
     quote_tests();
     transform_tests();

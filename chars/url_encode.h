@@ -21,8 +21,9 @@ url_encode_char(char ch, char buffer[4]);
 // is always null terminated.
 //
 // Alphanumeric characters, '-', '_', '.' and '~' generate a string containing
-// the character unchanged.  The space character generates a string containing
-// a '+'.  All other characters generate a string containing a percent followed
+// the character unchanged; this is the set of `unreserved' characters as
+// defined in RFC 3986.  The space character generates a string containing a
+// '+'.  All other characters generate a string containing a percent followed
 // by the two digit hexadecimal value of the character.
 //
 // Since the largest URL encoded sequence is three characters long, a buffer of

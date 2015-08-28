@@ -3,16 +3,15 @@
 #include <errno.h>
 
 
-char *
-add_untransformed_char(char ch, char *buffer, char *buffer_end, bool *is_full)
+bool
+add_untransformed_char(char ch, char **buffer, char *buffer_end)
 {
-    if (buffer_end == buffer) {
-        *is_full = true;
+    if (buffer_end <= *buffer) {
+        return false;
     } else {
-        *buffer++ = ch;
-        *is_full = false;
+        *(*buffer)++ = ch;
+        return true;
     }
-    return buffer;
 }
 
 
@@ -32,13 +31,7 @@ transform_string(char const *source,
     }
     
     destination_end -= sizeof(char);
-    while (*source) {
-        bool is_full;
-        destination = add_transformed_char(*source,
-                                           destination,
-                                           destination_end,
-                                           &is_full);
-        if (is_full) break;
+    while (*source && add_transformed_char(*source, &destination, destination_end)) {
         ++source;
     }
     *destination = '\0';

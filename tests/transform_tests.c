@@ -6,16 +6,12 @@
 #include "asserts.h"
 
 
-static char *
-add_capitalized_char(char ch, char *buffer, char *buffer_end, bool *is_full)
+static bool
+add_capitalized_char(char ch, char **buffer, char *buffer_end)
 {
-    if (buffer_end == buffer) {
-        *is_full = true;
-    } else {
-        *buffer++ = toupper(ch);
-        *is_full = false;
-    }
-    return buffer;
+    if (buffer_end <= *buffer) return false;
+    *(*buffer)++ = toupper(ch);
+    return true;
 }
 
 

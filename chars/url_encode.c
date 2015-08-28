@@ -6,49 +6,36 @@
 #include "uint8_convert.h"
 
 
-static char *
-add_percent_encoded_char(uint8_t value,
-                         char *encoded,
-                         char *encoded_end,
-                         bool *is_full)
+static bool
+add_percent_encoded_char(uint8_t char_value, char **buffer, char *buffer_end)
 {
-    if (encoded_end - encoded < 3) {
-        *is_full = true;
-    } else {
-        char hex_chars[4];
-        
-        uint8_to_hex_chars(value, hex_chars);
-        *encoded++ = '%';
-        *encoded++ = hex_chars[0];
-        *encoded++ = hex_chars[1];
-        *is_full = false;
-    }
-    return encoded;
+    if (buffer_end - *buffer < 3) return false;
+    
+    char hex_chars[4];
+    uint8_to_hex_chars(char_value, hex_chars);
+    *(*buffer)++ = '%';
+    *(*buffer)++ = hex_chars[0];
+    *(*buffer)++ = hex_chars[1];
+    return true;
 }
 
 
-static char *
-add_url_encoded_char(char unencoded,
-                     char *encoded,
-                     char *encoded_end,
-                     bool *is_full)
+static bool
+add_url_encoded_char(char ch, char **buffer, char *buffer_end)
 {
-    if (   (unencoded >= 'A' && unencoded <= 'Z')
-        || (unencoded >= 'a' && unencoded <= 'z')
-        || (unencoded >= '0' && unencoded <= '9')
-        || unencoded == '-'
-        || unencoded == '_'
-        || unencoded == '.'
-        || unencoded == '~')
+    if (   (ch >= 'A' && ch <= 'Z')
+        || (ch >= 'a' && ch <= 'z')
+        || (ch >= '0' && ch <= '9')
+        || ch == '-'
+        || ch == '_'
+        || ch == '.'
+        || ch == '~')
     {
-        return add_untransformed_char(unencoded, encoded, encoded_end, is_full);
-    } else if (unencoded == ' ') {
-        return add_untransformed_char('+', encoded, encoded_end, is_full);
+        return add_untransformed_char(ch, buffer, buffer_end);
+    } else if (ch == ' ') {
+        return add_untransformed_char('+', buffer, buffer_end);
     } else {
-        return add_percent_encoded_char(unencoded,
-                                        encoded,
-                                        encoded_end,
-                                        is_full);
+        return add_percent_encoded_char(ch, buffer, buffer_end);
     }
 }
 
@@ -56,13 +43,10 @@ add_url_encoded_char(char unencoded,
 void
 url_encode_char(char unencoded, char encoded[4])
 {
-    char *encoded_end = encoded + sizeof(char[4]) - sizeof(char);
-    bool is_full;
-    char *next_char = add_url_encoded_char(unencoded,
-                                           encoded,
-                                           encoded_end,
-                                           &is_full);
-    *next_char = '\0';
+    char *buffer = encoded;
+    char *buffer_end = encoded + sizeof(char[4]) - sizeof(char);
+    add_url_encoded_char(unencoded, &buffer, buffer_end);
+    *buffer = '\0';
 }
 
 

@@ -6,19 +6,19 @@
 
 
 // Character transformation function type.  The source character `ch' is
-// transformed and written to the destination given by [buffer, buffer_end).
+// transformed and written to the destination given by [*buffer, buffer_end).
 // The transformed character may be a sequence of zero or more chars.  If the
-// transformed character fits in the buffer, a pointer to the next available
-// location in the buffer is returned and `*is_full' is set to `false'.  If the
-// transformed character does not fit in the buffer, a pointer to `buffer' is
-// returned and `*is_full' is set to `true'.
-typedef char *
-add_transformed_char_fn(char ch, char *buffer, char *buffer_end, bool *is_full);
+// transformed character fits in the buffer, `*buffer' is set to the next
+// available location in the buffer and `true' returned.  If the transformed
+// character does not fit in the buffer, `*buffer' is not modified and `false'
+// is returned.
+typedef bool
+add_transformed_char_fn(char ch, char **buffer, char *buffer_end);
 
 
 // Write a char to a string buffer without modification.
-char *
-add_untransformed_char(char ch, char *buffer, char *buffer_end, bool *is_full);
+bool
+add_untransformed_char(char ch, char **buffer, char *buffer_end);
 
 // Transform a null terminated string using the provided char transformation
 // function.  The transformed string is written to the buffer given by
